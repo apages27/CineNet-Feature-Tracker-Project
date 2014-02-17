@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "CineNet Feature-Tracking Tool Home Page";
+}
+
+<div class="jumbotron col-md-8 col-md-offset-2">
+    <h2>Welcome to the CineNet Feature-Tracking Tool!</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h3>Would you like to:</h3>
+        <p></p>
+        <p>@Html.ActionLink("View Feature List", "FeatureList", "Home")
+        or    
+        @Html.ActionLink("Add New Feature", "AddFeature", "Home")</p>
+    </div>
+</div>
