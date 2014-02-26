@@ -59,5 +59,27 @@ namespace FeatureTrackingToolExperiment.Controllers
                 return View(newFeature);
             }
         }
+
+        public ActionResult EditFeature(int id)
+        {
+            FeatureModel model = oper.GetFeatureById(id);
+            
+            return View("AddFeature", model);
+        }
+
+        [HttpPost]
+        public ActionResult EditFeature(FeatureModel newFeature)
+        {
+            if (ModelState.IsValid)
+            {
+                oper.AddFeatureToList(newFeature);
+
+                return RedirectToAction("FeatureList");
+            }
+            else
+            {
+                return View("AddFeature", newFeature);
+            }
+        }
     }
 }

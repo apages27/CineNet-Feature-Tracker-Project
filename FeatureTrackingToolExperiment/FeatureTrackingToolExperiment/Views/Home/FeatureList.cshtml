@@ -21,6 +21,48 @@
         <th>
             @Html.DisplayName("Description")
         </th>
+        <th>
+            @Html.DisplayName("Notes")
+        </th>
+        <th>
+            @Html.DisplayName("Estimated Price")
+        </th>
+        <th>
+            @Html.DisplayName("Estimated Annual Unit Sale")
+        </th>
+        <th>
+            @Html.DisplayName("Estimated Days to Release MVP")
+        </th>
+        <th>
+            @Html.DisplayName("Actual Days to Release MVP")
+        </th>
+        <th>
+            @Html.DisplayName("Classification")
+        </th>
+        <th>
+            @Html.DisplayName("Feature Entered By")
+        </th>
+        <th>
+            @Html.DisplayName("Urgent for Project?")
+        </th>
+        <th>
+            @Html.DisplayName("Markets")
+        </th>
+        <th>
+            @Html.DisplayName("Applications")
+        </th>
+        <th>
+            @Html.DisplayName("RankDM")
+        </th>
+        <th>
+            @Html.DisplayName("RankDB")
+        </th>
+        <th>
+            @Html.DisplayName("RankRK")
+        </th>
+        <th>
+            @Html.DisplayName("Competitors Have Feature?")
+        </th>
         <th></th>
     </tr>
 
@@ -36,8 +78,50 @@
             @Html.DisplayFor(modelItem => item.FeatureDescription)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.FeatureNotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedAnnualUnitSale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstimatedDaysToReleaseMVP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActualDaysToReleaseMVP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FeatureEnteredBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsUrgentForProject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Markets)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Applications)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RankDM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RankDB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RankRK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompetitorsHaveFeature)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditFeature", new { id=item.FeatureId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.FeatureId })
         </td>
     </tr>
 }
