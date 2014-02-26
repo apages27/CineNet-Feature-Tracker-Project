@@ -4,14 +4,19 @@
     ViewBag.Title = "Add Feature";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (isAdd)
+{
+    <h2>Add Feature</h2>
+}
+else
+{
+    <h2>Edit Feature</h2>
+}
 
-<h2>Add Feature</h2>
-
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true)
