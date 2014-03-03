@@ -226,6 +226,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\FeatureList.cshtml" />
     <Content Include="Views\Home\AddFeature.cshtml" />
+    <Content Include="Views\Home\DeleteFeature.cshtml" />
+    <Content Include="Views\Home\EditFeature.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
