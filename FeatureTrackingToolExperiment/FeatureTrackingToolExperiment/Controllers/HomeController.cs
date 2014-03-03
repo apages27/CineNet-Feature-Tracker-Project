@@ -19,21 +19,7 @@ namespace FeatureTrackingToolExperiment.Controllers
 
         public ActionResult FeatureList()
         {
-            List<FeatureModel> features = new List<FeatureModel>();
-
-            string[] featureListArray = oper.GetFeatureList();
-
-            foreach (var line in featureListArray)
-            {
-                FeatureModel feature = new FeatureModel();
-                string[] splitFeature = line.Split(',');
-
-                feature.FeatureTitle = splitFeature[0];
-                feature.FeaturePriority = int.Parse(splitFeature[1]);
-                feature.FeatureDescription = splitFeature[2];
-
-                features.Add(feature);
-            }
+            List<FeatureModel> features = oper.GetFeatureList();
 
             return View(features);
         }
