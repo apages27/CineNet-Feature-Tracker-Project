@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Web;
+using FeatureTrackingToolExperiment.Interfaces;
 using FeatureTrackingToolExperiment.Models;
 using FeatureTrackingToolExperiment.Repositories;
 
@@ -11,7 +12,7 @@ namespace FeatureTrackingToolExperiment.Operations
 {
     public class FeatureOperations
     {
-        FeatureRepository repo = new FeatureRepository();
+        private IFeatureRepository repo = RepositoryFactory.GetFeatureRepository("T");
 
         public void AddFeatureToList(FeatureModel newFeature)
         {

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Antlr.Runtime.Tree;
+using FeatureTrackingToolExperiment.Interfaces;
 using FeatureTrackingToolExperiment.Models;
 
 namespace FeatureTrackingToolExperiment.Repositories
 {
-    public class TestRepository
+    public class TestRepository : IFeatureRepository
     {
         public List<FeatureModel> GetFeatureList()
         {
@@ -104,8 +105,124 @@ namespace FeatureTrackingToolExperiment.Repositories
             features.Add(testFeature2);
 
             return features;
-        } 
+        }
+        
+        public FeatureModel GetFeatureById(int id)
+        {
+            var list = GetFeatureList();
 
+            foreach (var featureModel in list) if (featureModel.FeatureId == id) return featureModel;
 
+            return null;
+        }
+
+        public void AddNewFeature(FeatureModel newFeature)
+        {
+            var list = GetFeatureList();
+
+            var usedIdList = new List<int>();
+
+            var featureToBeAdded = new FeatureModel();
+
+            var markets3 = new FeatureMarkets();
+
+            var applications3 = new FeatureApplications();
+
+            foreach (var featureModel in list) usedIdList.Add(featureModel.FeatureId);
+            
+            markets3.FedCiv = newFeature.Markets.FedCiv;
+            markets3.FedDOD = newFeature.Markets.FedDOD;
+            markets3.Edu = newFeature.Markets.Edu;
+            markets3.Corp = newFeature.Markets.Corp;
+            markets3.Local = newFeature.Markets.Local;
+            markets3.ResellerIntegratorConsultant = newFeature.Markets.ResellerIntegratorConsultant;
+
+            applications3.TransMgmt = newFeature.Applications.TransMgmt;
+            applications3.SecAndPubSafety = newFeature.Applications.SecAndPubSafety;
+            applications3.CollabConfPresent = newFeature.Applications.CollabConfPresent;
+            applications3.CommandAndControl = newFeature.Applications.CommandAndControl;
+            applications3.AdvVisualization = newFeature.Applications.AdvVisualization;
+            applications3.BrandMgmt = newFeature.Applications.BrandMgmt;
+            applications3.BroadcastOper = newFeature.Applications.BroadcastOper;
+            applications3.DigitalSignage = newFeature.Applications.DigitalSignage;
+            applications3.NetworkOper = newFeature.Applications.NetworkOper;
+            applications3.ProcessControl = newFeature.Applications.ProcessControl;
+
+            featureToBeAdded.FeatureId = usedIdList.Last() + 1;
+            featureToBeAdded.FeatureTitle = newFeature.FeatureTitle;
+            featureToBeAdded.FeaturePriority = newFeature.FeaturePriority;
+            featureToBeAdded.FeatureDescription = newFeature.FeatureDescription;
+            featureToBeAdded.FeatureNotes = newFeature.FeatureNotes;
+            featureToBeAdded.EstimatedPrice = newFeature.EstimatedPrice;
+            featureToBeAdded.EstimatedAnnualUnitSale = newFeature.EstimatedAnnualUnitSale;
+            featureToBeAdded.EstimatedDaysToReleaseMVP = newFeature.EstimatedDaysToReleaseMVP;
+            featureToBeAdded.ActualDaysToReleaseMVP = newFeature.ActualDaysToReleaseMVP;
+            featureToBeAdded.Classification = newFeature.Classification;
+            featureToBeAdded.FeatureEnteredBy = newFeature.FeatureEnteredBy;
+            featureToBeAdded.IsUrgentForProject = newFeature.IsUrgentForProject;
+            featureToBeAdded.Markets = markets3;
+            featureToBeAdded.Applications = applications3;
+            featureToBeAdded.RankDM = newFeature.RankDM;
+            featureToBeAdded.RankDB = newFeature.RankDB;
+            featureToBeAdded.RankRK = newFeature.RankRK;
+            featureToBeAdded.CompetitorsHaveFeature = newFeature.CompetitorsHaveFeature;
+
+            list.Add(featureToBeAdded);
+        }
+
+        public void EditFeature(FeatureModel editedFeature)
+        {
+            var featureToBeEdited = GetFeatureById(editedFeature.FeatureId);
+
+            var markets4 = new FeatureMarkets();
+
+            var applications4 = new FeatureApplications();
+
+            //markets4.FedCiv = editedFeature.Markets.FedCiv;
+            //markets4.FedDOD = editedFeature.Markets.FedDOD;
+            //markets4.Edu = editedFeature.Markets.Edu;
+            //markets4.Corp = editedFeature.Markets.Corp;
+            //markets4.Local = editedFeature.Markets.Local;
+            //markets4.ResellerIntegratorConsultant = editedFeature.Markets.ResellerIntegratorConsultant;
+
+            //applications4.TransMgmt =   editedFeature.Applications.TransMgmt;
+            //applications4.SecAndPubSafety = editedFeature.Applications.SecAndPubSafety;
+            //applications4.CollabConfPresent = editedFeature.Applications.CollabConfPresent;
+            //applications4.CommandAndControl = editedFeature.Applications.CommandAndControl;
+            //applications4.AdvVisualization = editedFeature.Applications.AdvVisualization;
+            //applications4.BrandMgmt = editedFeature.Applications.BrandMgmt;
+            //applications4.BroadcastOper = editedFeature.Applications.BroadcastOper;
+            //applications4.DigitalSignage = editedFeature.Applications.DigitalSignage;
+            //applications4.NetworkOper = editedFeature.Applications.NetworkOper;
+            //applications4.ProcessControl = editedFeature.Applications.ProcessControl;
+
+            featureToBeEdited.FeatureId = editedFeature.FeatureId;
+            featureToBeEdited.FeatureTitle = editedFeature.FeatureTitle;
+            featureToBeEdited.FeaturePriority = editedFeature.FeaturePriority;
+            featureToBeEdited.FeatureDescription = editedFeature.FeatureDescription;
+            featureToBeEdited.FeatureNotes = editedFeature.FeatureNotes;
+            featureToBeEdited.EstimatedPrice = editedFeature.EstimatedPrice;
+            featureToBeEdited.EstimatedAnnualUnitSale = editedFeature.EstimatedAnnualUnitSale;
+            featureToBeEdited.EstimatedDaysToReleaseMVP = editedFeature.EstimatedDaysToReleaseMVP;
+            featureToBeEdited.ActualDaysToReleaseMVP = editedFeature.ActualDaysToReleaseMVP;
+            featureToBeEdited.Classification = editedFeature.Classification;
+            featureToBeEdited.FeatureEnteredBy = editedFeature.FeatureEnteredBy;
+            featureToBeEdited.IsUrgentForProject = editedFeature.IsUrgentForProject;
+            featureToBeEdited.Markets = markets4;
+            featureToBeEdited.Applications = applications4;
+            featureToBeEdited.RankDM = editedFeature.RankDM;
+            featureToBeEdited.RankDB = editedFeature.RankDB;
+            featureToBeEdited.RankRK = editedFeature.RankRK;
+            featureToBeEdited.CompetitorsHaveFeature = editedFeature.CompetitorsHaveFeature;
+        }
+
+        public void DeleteFeature(int id)
+        {
+            var list = GetFeatureList();
+            
+            var featureToBeDeleted = GetFeatureById(id);
+
+            list.Remove(featureToBeDeleted);
+        }
     }
 }

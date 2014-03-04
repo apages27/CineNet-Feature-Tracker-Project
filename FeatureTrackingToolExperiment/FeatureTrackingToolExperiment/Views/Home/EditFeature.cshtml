@@ -7,7 +7,6 @@
 
 <h2>Edit Feature</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -111,7 +110,20 @@
                 @Html.ValidationMessageFor(model => model.IsUrgentForProject)
             </div>
         </div>
-
+        <div class="form-group">
+            @Html.Label("Markets", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Markets)
+                @Html.ValidationMessageFor(model => model.Markets)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Applications", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Applications)
+                @Html.ValidationMessageFor(model => model.Applications)
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.RankDM, new { @class = "control-label col-md-2" })
             <div class="col-md-10">

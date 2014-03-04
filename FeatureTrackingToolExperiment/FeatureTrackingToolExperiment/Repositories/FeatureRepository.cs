@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using FeatureTrackingToolExperiment.Interfaces;
 using FeatureTrackingToolExperiment.Models;
 
 namespace FeatureTrackingToolExperiment.Repositories
 {
-    public class FeatureRepository
+    public class FeatureRepository : IFeatureRepository
     {
         public List<FeatureModel> GetFeatureList()
         {
