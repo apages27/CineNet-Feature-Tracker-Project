@@ -163,13 +163,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FeatureApplications.cs" />
     <Compile Include="Models\FeatureMarkets.cs" />
     <Compile Include="Models\FeatureModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Operations\Operations.cs" />
+    <Compile Include="Operations\FeatureOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\FeatureRepository.cs" />
+    <Compile Include="Repositories\TestRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -225,10 +228,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\FeatureList.cshtml" />
     <Content Include="Views\Home\AddFeature.cshtml" />
+    <Content Include="Views\Home\DeleteFeature.cshtml" />
+    <Content Include="Views\Home\EditFeature.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

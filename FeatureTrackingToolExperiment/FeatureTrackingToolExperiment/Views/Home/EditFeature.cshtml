@@ -1,23 +1,31 @@
 ﻿@model FeatureTrackingToolExperiment.Models.FeatureModel
 
 @{
-    ViewBag.Title = "Add Feature";
+    ViewBag.Title = "Edit Feature";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add Feature</h2>
+<h2>Edit Feature</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
+        
         <hr />
         @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.FeatureId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FeatureId)
+                @Html.ValidationMessageFor(model => model.FeatureId)
+            </div>
+        </div>
 
         <div class="form-group">
-            @Html.Label("Feature Title", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FeatureTitle, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FeatureTitle)
                 @Html.ValidationMessageFor(model => model.FeatureTitle)
@@ -25,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Feature Priority", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FeaturePriority, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FeaturePriority)
                 @Html.ValidationMessageFor(model => model.FeaturePriority)
@@ -33,84 +41,103 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Feature Description", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FeatureDescription, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FeatureDescription)
                 @Html.ValidationMessageFor(model => model.FeatureDescription)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Feature Notes", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FeatureNotes, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FeatureNotes)
                 @Html.ValidationMessageFor(model => model.FeatureNotes)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Estimated Price", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EstimatedPrice, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EstimatedPrice)
                 @Html.ValidationMessageFor(model => model.EstimatedPrice)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Estimated Annual Unit Sale", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EstimatedAnnualUnitSale, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EstimatedAnnualUnitSale)
                 @Html.ValidationMessageFor(model => model.EstimatedAnnualUnitSale)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Estimated Days to Release MVP", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EstimatedDaysToReleaseMVP, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EstimatedDaysToReleaseMVP)
                 @Html.ValidationMessageFor(model => model.EstimatedDaysToReleaseMVP)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Actual Days to Release MVP", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ActualDaysToReleaseMVP, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ActualDaysToReleaseMVP)
                 @Html.ValidationMessageFor(model => model.ActualDaysToReleaseMVP)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Classification", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Classification, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Classification)
                 @Html.ValidationMessageFor(model => model.Classification)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Feature Entered By", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FeatureEnteredBy, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FeatureEnteredBy)
                 @Html.ValidationMessageFor(model => model.FeatureEnteredBy)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Urgent for Project?", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsUrgentForProject, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IsUrgentForProject)
                 @Html.ValidationMessageFor(model => model.IsUrgentForProject)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Markets", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RankDM, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Markets)
-                @Html.ValidationMessageFor(model => model.Markets)
+                @Html.EditorFor(model => model.RankDM)
+                @Html.ValidationMessageFor(model => model.RankDM)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Applications", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RankDB, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Applications)
-                @Html.ValidationMessageFor(model => model.Applications)
+                @Html.EditorFor(model => model.RankDB)
+                @Html.ValidationMessageFor(model => model.RankDB)
             </div>
         </div>
+
         <div class="form-group">
-            @Html.Label("Competitors Have Feature?", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RankRK, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RankRK)
+                @Html.ValidationMessageFor(model => model.RankRK)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompetitorsHaveFeature, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CompetitorsHaveFeature)
                 @Html.ValidationMessageFor(model => model.CompetitorsHaveFeature)
@@ -119,7 +146,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

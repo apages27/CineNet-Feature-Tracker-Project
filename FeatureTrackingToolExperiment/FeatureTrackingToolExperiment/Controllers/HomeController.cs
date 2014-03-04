@@ -19,21 +19,7 @@ namespace FeatureTrackingToolExperiment.Controllers
 
         public ActionResult FeatureList()
         {
-            List<FeatureModel> features = new List<FeatureModel>();
-
-            string[] featureListArray = oper.GetFeatureList();
-
-            foreach (var line in featureListArray)
-            {
-                FeatureModel feature = new FeatureModel();
-                string[] splitFeature = line.Split(',');
-
-                feature.FeatureTitle = splitFeature[0];
-                feature.FeaturePriority = int.Parse(splitFeature[1]);
-                feature.FeatureDescription = splitFeature[2];
-
-                features.Add(feature);
-            }
+            List<FeatureModel> features = oper.GetFeatureList();
 
             return View(features);
         }
@@ -62,23 +48,45 @@ namespace FeatureTrackingToolExperiment.Controllers
 
         public ActionResult EditFeature(int id)
         {
-            FeatureModel model = oper.GetFeatureById(id);
+            FeatureModel featureToBeEdited = oper.GetFeatureById(id);
             
-            return View("AddFeature", model);
+            return View("EditFeature", featureToBeEdited);
         }
 
         [HttpPost]
-        public ActionResult EditFeature(FeatureModel newFeature)
+        public ActionResult EditFeature(FeatureModel editedFeature)
         {
             if (ModelState.IsValid)
             {
-                oper.AddFeatureToList(newFeature);
+                oper.EditFeature(editedFeature);
 
                 return RedirectToAction("FeatureList");
             }
             else
             {
-                return View("AddFeature", newFeature);
+                return View("EditFeature", editedFeature);
+            }
+        }
+
+        public ActionResult DeleteFeature(int id)
+        {
+            FeatureModel featureToBeDeleted = oper.GetFeatureById(id);
+
+            return View("DeleteFeature", featureToBeDeleted);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteFeature(FeatureModel deletedFeature)
+        {
+            if (ModelState.IsValid)
+            {
+                oper.DeleteFeature(deletedFeature.FeatureId);
+
+                return RedirectToAction("FeatureList");
+            }
+            else
+            {
+                return View("DeleteFeature", deletedFeature);
             }
         }
     }
