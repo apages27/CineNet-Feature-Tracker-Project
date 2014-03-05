@@ -12,7 +12,7 @@ namespace FeatureTrackingToolExperiment.Operations
 {
     public class FeatureOperations
     {
-        private IFeatureRepository repo = RepositoryFactory.GetFeatureRepository("T");
+        public IFeatureRepository repo = RepositoryFactory.GetFeatureRepository("test");
 
         public void AddFeatureToList(FeatureModel newFeature)
         {

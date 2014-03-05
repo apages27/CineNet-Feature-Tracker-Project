@@ -10,6 +10,10 @@ namespace FeatureTrackingToolExperiment.Repositories
 {
     public class TestRepository : IFeatureRepository
     {
+        public bool IsFeatureAdded { get; set; }
+        public bool IsFeatureEdited { get; set; }
+        public bool IsFeatureDeleted { get; set; }
+
         public List<FeatureModel> GetFeatureList()
         {
             List<FeatureModel> features = new List<FeatureModel>();
@@ -168,6 +172,8 @@ namespace FeatureTrackingToolExperiment.Repositories
             featureToBeAdded.CompetitorsHaveFeature = newFeature.CompetitorsHaveFeature;
 
             list.Add(featureToBeAdded);
+
+            if (list.Contains(featureToBeAdded)) IsFeatureAdded = true;
         }
 
         public void EditFeature(FeatureModel editedFeature)
@@ -178,23 +184,23 @@ namespace FeatureTrackingToolExperiment.Repositories
 
             var applications4 = new FeatureApplications();
 
-            //markets4.FedCiv = editedFeature.Markets.FedCiv;
-            //markets4.FedDOD = editedFeature.Markets.FedDOD;
-            //markets4.Edu = editedFeature.Markets.Edu;
-            //markets4.Corp = editedFeature.Markets.Corp;
-            //markets4.Local = editedFeature.Markets.Local;
-            //markets4.ResellerIntegratorConsultant = editedFeature.Markets.ResellerIntegratorConsultant;
+            markets4.FedCiv = editedFeature.Markets.FedCiv;
+            markets4.FedDOD = editedFeature.Markets.FedDOD;
+            markets4.Edu = editedFeature.Markets.Edu;
+            markets4.Corp = editedFeature.Markets.Corp;
+            markets4.Local = editedFeature.Markets.Local;
+            markets4.ResellerIntegratorConsultant = editedFeature.Markets.ResellerIntegratorConsultant;
 
-            //applications4.TransMgmt =   editedFeature.Applications.TransMgmt;
-            //applications4.SecAndPubSafety = editedFeature.Applications.SecAndPubSafety;
-            //applications4.CollabConfPresent = editedFeature.Applications.CollabConfPresent;
-            //applications4.CommandAndControl = editedFeature.Applications.CommandAndControl;
-            //applications4.AdvVisualization = editedFeature.Applications.AdvVisualization;
-            //applications4.BrandMgmt = editedFeature.Applications.BrandMgmt;
-            //applications4.BroadcastOper = editedFeature.Applications.BroadcastOper;
-            //applications4.DigitalSignage = editedFeature.Applications.DigitalSignage;
-            //applications4.NetworkOper = editedFeature.Applications.NetworkOper;
-            //applications4.ProcessControl = editedFeature.Applications.ProcessControl;
+            applications4.TransMgmt = editedFeature.Applications.TransMgmt;
+            applications4.SecAndPubSafety = editedFeature.Applications.SecAndPubSafety;
+            applications4.CollabConfPresent = editedFeature.Applications.CollabConfPresent;
+            applications4.CommandAndControl = editedFeature.Applications.CommandAndControl;
+            applications4.AdvVisualization = editedFeature.Applications.AdvVisualization;
+            applications4.BrandMgmt = editedFeature.Applications.BrandMgmt;
+            applications4.BroadcastOper = editedFeature.Applications.BroadcastOper;
+            applications4.DigitalSignage = editedFeature.Applications.DigitalSignage;
+            applications4.NetworkOper = editedFeature.Applications.NetworkOper;
+            applications4.ProcessControl = editedFeature.Applications.ProcessControl;
 
             featureToBeEdited.FeatureId = editedFeature.FeatureId;
             featureToBeEdited.FeatureTitle = editedFeature.FeatureTitle;
@@ -214,6 +220,8 @@ namespace FeatureTrackingToolExperiment.Repositories
             featureToBeEdited.RankDB = editedFeature.RankDB;
             featureToBeEdited.RankRK = editedFeature.RankRK;
             featureToBeEdited.CompetitorsHaveFeature = editedFeature.CompetitorsHaveFeature;
+
+            if (featureToBeEdited == editedFeature) IsFeatureEdited = true;
         }
 
         public void DeleteFeature(int id)
@@ -223,6 +231,8 @@ namespace FeatureTrackingToolExperiment.Repositories
             var featureToBeDeleted = GetFeatureById(id);
 
             list.Remove(featureToBeDeleted);
+
+            if (!list.Contains(featureToBeDeleted)) IsFeatureDeleted = true;
         }
     }
 }
