@@ -14,14 +14,24 @@ namespace FeatureTrackingToolExperiment.Tests.Operations
     [TestFixture]
     public class OperationsTests
     {
-        FeatureOperations oper = new FeatureOperations();
+        private FeatureOperations oper = new FeatureOperations();
 
         [Test]
         public void GetFeatureListReturnsList()
         {
-            List<FeatureModel> featureList = oper.GetFeatureList();
+            var featureList = oper.GetFeatureList();
 
             Assert.IsNotEmpty(featureList);
+        }
+
+        [Test]
+        public void GetFeatureByIdReturnsCorrectFeature()
+        {
+            var id = 20;
+
+            var feature = oper.GetFeatureById(id);
+
+            Assert.AreEqual(id, feature.FeatureId);
         }
 
         [Test]
@@ -71,8 +81,55 @@ namespace FeatureTrackingToolExperiment.Tests.Operations
             featureToBeAdded.CompetitorsHaveFeature = true;
 
             oper.AddFeatureToList(featureToBeAdded);
+        }
 
-            oper.repo.GetType();
+        [Test]
+        public void EditFeature()
+        {
+            var featureToBeEdited = new FeatureModel();
+
+            var markets = new FeatureMarkets();
+
+            var applications = new FeatureApplications();
+
+            markets.FedCiv = true;
+            markets.FedDOD = false;
+            markets.Edu = true;
+            markets.Corp = false;
+            markets.Local = true;
+            markets.ResellerIntegratorConsultant = false;
+
+            applications.TransMgmt = true;
+            applications.SecAndPubSafety = false;
+            applications.CollabConfPresent = true;
+            applications.CommandAndControl = false;
+            applications.AdvVisualization = true;
+            applications.BrandMgmt = false;
+            applications.BroadcastOper = true;
+            applications.DigitalSignage = false;
+            applications.NetworkOper = true;
+            applications.ProcessControl = false;
+
+            featureToBeEdited.FeatureId = 0;
+            featureToBeEdited.FeatureTitle = "Test Things";
+            featureToBeEdited.FeaturePriority = 10;
+            featureToBeEdited.FeatureDescription = "This is a test.  This is ONLY a test.";
+            featureToBeEdited.FeatureNotes = "No notes yet.";
+            featureToBeEdited.EstimatedPrice = 5000M;
+            featureToBeEdited.EstimatedAnnualUnitSale = 5000;
+            featureToBeEdited.EstimatedDaysToReleaseMVP = 5;
+            featureToBeEdited.ActualDaysToReleaseMVP = null;
+            featureToBeEdited.Classification = "Story";
+            featureToBeEdited.FeatureEnteredBy = "Anna";
+            featureToBeEdited.IsUrgentForProject = false;
+            featureToBeEdited.Markets = markets;
+            featureToBeEdited.Applications = applications;
+            featureToBeEdited.RankDM = 10;
+            featureToBeEdited.RankDB = 9;
+            featureToBeEdited.RankRK = 8;
+            featureToBeEdited.CompetitorsHaveFeature = true;
+
+            oper.AddFeatureToList(featureToBeEdited);
         }
     }
 }

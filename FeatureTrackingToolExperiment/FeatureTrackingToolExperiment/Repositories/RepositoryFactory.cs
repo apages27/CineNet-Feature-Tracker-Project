@@ -10,7 +10,8 @@ namespace FeatureTrackingToolExperiment.Repositories
     {
         public static IFeatureRepository GetFeatureRepository(string mode)
         {
-            if (mode == "test") return new TestRepository(); else return new FeatureRepository();
+            if (mode == "test") return new TestRepository();
+            return new FeatureRepository();
         }
     }
 }

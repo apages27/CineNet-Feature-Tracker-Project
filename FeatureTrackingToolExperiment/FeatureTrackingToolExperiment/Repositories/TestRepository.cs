@@ -10,19 +10,15 @@ namespace FeatureTrackingToolExperiment.Repositories
 {
     public class TestRepository : IFeatureRepository
     {
-        public bool IsFeatureAdded { get; set; }
-        public bool IsFeatureEdited { get; set; }
-        public bool IsFeatureDeleted { get; set; }
-
         public List<FeatureModel> GetFeatureList()
         {
-            List<FeatureModel> features = new List<FeatureModel>();
+            var features = new List<FeatureModel>();
 
-            FeatureModel testFeature1 = new FeatureModel();
+            var testFeature1 = new FeatureModel();
 
-            FeatureMarkets markets1 = new FeatureMarkets();
+            var markets1 = new FeatureMarkets();
 
-            FeatureApplications applications1 = new FeatureApplications();
+            var applications1 = new FeatureApplications();
 
             markets1.FedCiv = true;
             markets1.FedDOD = true;
@@ -63,11 +59,11 @@ namespace FeatureTrackingToolExperiment.Repositories
 
             features.Add(testFeature1);
 
-            FeatureModel testFeature2 = new FeatureModel();
+            var testFeature2 = new FeatureModel();
 
-            FeatureMarkets markets2 = new FeatureMarkets();
+            var markets2 = new FeatureMarkets();
 
-            FeatureApplications applications2 = new FeatureApplications();
+            var applications2 = new FeatureApplications();
 
             markets2.FedCiv = true;
             markets2.FedDOD = true;
@@ -172,8 +168,6 @@ namespace FeatureTrackingToolExperiment.Repositories
             featureToBeAdded.CompetitorsHaveFeature = newFeature.CompetitorsHaveFeature;
 
             list.Add(featureToBeAdded);
-
-            if (list.Contains(featureToBeAdded)) IsFeatureAdded = true;
         }
 
         public void EditFeature(FeatureModel editedFeature)
@@ -220,8 +214,6 @@ namespace FeatureTrackingToolExperiment.Repositories
             featureToBeEdited.RankDB = editedFeature.RankDB;
             featureToBeEdited.RankRK = editedFeature.RankRK;
             featureToBeEdited.CompetitorsHaveFeature = editedFeature.CompetitorsHaveFeature;
-
-            if (featureToBeEdited == editedFeature) IsFeatureEdited = true;
         }
 
         public void DeleteFeature(int id)
@@ -231,8 +223,6 @@ namespace FeatureTrackingToolExperiment.Repositories
             var featureToBeDeleted = GetFeatureById(id);
 
             list.Remove(featureToBeDeleted);
-
-            if (!list.Contains(featureToBeDeleted)) IsFeatureDeleted = true;
         }
     }
 }

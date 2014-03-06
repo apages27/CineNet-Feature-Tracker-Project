@@ -11,14 +11,14 @@ namespace FeatureTrackingToolExperiment.Repositories
     {
         public List<FeatureModel> GetFeatureList()
         {
-            List<FeatureModel> features = new List<FeatureModel>();
+            var features = new List<FeatureModel>();
 
             return features;
         }
 
         public FeatureModel GetFeatureById(int id)
         {
-            FeatureModel feature = new FeatureModel();
+            var feature = new FeatureModel();
 
             return feature;
         }

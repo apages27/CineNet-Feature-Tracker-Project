@@ -21,14 +21,14 @@ namespace FeatureTrackingToolExperiment.Operations
 
         public List<FeatureModel> GetFeatureList()
         {
-            List<FeatureModel> featureListFile = repo.GetFeatureList();
+            var featureListFile = repo.GetFeatureList();
 
             return featureListFile;
         }
 
         public FeatureModel GetFeatureById(int id)
         {
-            FeatureModel feature = repo.GetFeatureById(id);
+            var feature = repo.GetFeatureById(id);
 
             return feature;
         }

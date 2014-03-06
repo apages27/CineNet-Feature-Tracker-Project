@@ -19,14 +19,14 @@ namespace FeatureTrackingToolExperiment.Controllers
 
         public ActionResult FeatureList()
         {
-            List<FeatureModel> features = oper.GetFeatureList();
+            var features = oper.GetFeatureList();
 
             return View(features);
         }
 
         public ActionResult AddFeature()
         {
-            FeatureModel model = new FeatureModel();
+            var model = new FeatureModel();
 
             return View(model);
         }
@@ -40,15 +40,12 @@ namespace FeatureTrackingToolExperiment.Controllers
 
                 return RedirectToAction("FeatureList"); 
             }
-            else
-            {
-                return View(newFeature);
-            }
+            return View(newFeature);
         }
 
         public ActionResult EditFeature(int id)
         {
-            FeatureModel featureToBeEdited = oper.GetFeatureById(id);
+            var featureToBeEdited = oper.GetFeatureById(id);
             
             return View("EditFeature", featureToBeEdited);
         }
@@ -62,15 +59,12 @@ namespace FeatureTrackingToolExperiment.Controllers
 
                 return RedirectToAction("FeatureList");
             }
-            else
-            {
-                return View("EditFeature", editedFeature);
-            }
+            return View("EditFeature", editedFeature);
         }
 
         public ActionResult DeleteFeature(int id)
         {
-            FeatureModel featureToBeDeleted = oper.GetFeatureById(id);
+            var featureToBeDeleted = oper.GetFeatureById(id);
 
             return View("DeleteFeature", featureToBeDeleted);
         }
@@ -84,10 +78,7 @@ namespace FeatureTrackingToolExperiment.Controllers
 
                 return RedirectToAction("FeatureList");
             }
-            else
-            {
-                return View("DeleteFeature", deletedFeature);
-            }
+            return View("DeleteFeature", deletedFeature);
         }
     }
 }
